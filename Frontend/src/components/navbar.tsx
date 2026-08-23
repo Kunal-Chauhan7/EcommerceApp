@@ -1,6 +1,16 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
+    const navigate = useNavigate()
+    const [query, setQuery] = useState('')
+
+    const handleSearch = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        navigate(`/search?keyword=${encodeURIComponent(query.trim())}`)
+    }
+
   return (
         <header className="navbar-wrap">
             <nav className="navbar" aria-label="Main navigation">
@@ -20,8 +30,14 @@ export const Navbar = () => {
                     <Link to="/about">About</Link>
                 </div>
 
-                <form className="nav-search" onSubmit={(e) => e.preventDefault()}>
-                    <input type="text" id="search" placeholder="Search products" />
+                <form className="nav-search" onSubmit={handleSearch}>
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search products"
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                    />
                     <button type="submit">Search</button>
                 </form>
                 <Link to="/cart" className="cart-link">

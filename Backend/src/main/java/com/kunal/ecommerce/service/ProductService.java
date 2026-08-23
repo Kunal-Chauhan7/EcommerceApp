@@ -49,4 +49,8 @@ public class ProductService {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Product> searchProduct(String keyword) {
+        return productRepo.searchProductByKeyword(keyword);
+    }
 }
