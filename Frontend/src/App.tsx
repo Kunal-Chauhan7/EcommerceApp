@@ -7,6 +7,7 @@ import CategoryPage from './pages/categoryPage'
 import { Navbar } from './components/navbar'
 import { Footer } from './components/footer'
 import Cart from './pages/cart'
+import Product from './pages/product'
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Route path="/add-product" element={<AddProduct />} />
             <Route path="/category" element={<CategoryPage />} />
             <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} /> 
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<Product />} /> 
           </Routes>
         </main>
         <Footer />

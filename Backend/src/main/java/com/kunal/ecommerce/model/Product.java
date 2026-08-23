@@ -1,5 +1,6 @@
 package com.kunal.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     private List<Image> images;
 }
